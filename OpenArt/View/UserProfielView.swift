@@ -12,7 +12,7 @@ struct UserProfielView: View {
     // MARK: - Properties
     
     @Environment(\.presentationMode) var presentationMode
-    let user: User
+    @Binding var user: User
     
     // MARK: - Body
     
@@ -62,8 +62,6 @@ struct UserProfielView: View {
                             .lineSpacing(10)
                             .font(.custom(Constants.Fonts.epilogueMedium, size: 13))
                             .foregroundColor(Constants.Colors.grayWhiteColor)
-                            
-                            
                             .multilineTextAlignment(.leading)
                             
                         
@@ -93,8 +91,8 @@ struct UserProfielView: View {
                     }
                     .padding(.horizontal, 16)
                     
-                    ForEach(user.items) { item in
-                        ItemCardView(item: item, creator: user.userName, creatorIcon: user.userImage)
+                    ForEach($user.items) { $item in
+                        ItemCardView(item: $item, creator: user.userName, creatorIcon: user.userImage)
                     }
                     
                     // Load More Button
@@ -114,6 +112,6 @@ struct UserProfielView: View {
 
 struct UserProfielView_Previews: PreviewProvider {
     static var previews: some View {
-        UserProfielView(user: User.userData)
+        UserProfielView(user: .constant(User.userData))
     }
 }

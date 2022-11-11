@@ -11,7 +11,7 @@ struct User {
     let userName: String
     let userImage: String
     let userBackgroundImage: String
-    let items: [Item]
+    var items: [Item]
     let socialMedia: [SocialMedia]
 }
 

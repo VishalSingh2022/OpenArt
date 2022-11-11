@@ -22,7 +22,7 @@ struct HeaderView: View {
             
             // User
             NavigationLink(
-                destination: UserProfielView(user: userViewModel.user)
+                destination: UserProfielView(user: $userViewModel.user)
                     .navigationBarHidden(true)
                 
             ) {

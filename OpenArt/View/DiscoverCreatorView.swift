@@ -62,12 +62,12 @@ struct DiscoverCreatorView: View {
              
                     // Creators Views
                     LazyVStack(spacing: 40) {
-                        ForEach(creatorViewModel.creators) { creator in
+                        ForEach($creatorViewModel.creators) { $creator in
                             NavigationLink(
-                                destination: CreatorProfileView(creator: creator)
+                                destination: CreatorProfileView(creator: $creator)
                                     .navigationBarHidden(true)
                             ) {
-                                CreatorCardView(creator: creator)
+                                CreatorCardView(creator: $creator)
                                     .foregroundColor(Constants.Colors.primaryColor)
                             }
                         }
@@ -83,7 +83,6 @@ struct DiscoverCreatorView: View {
         }
         .edgesIgnoringSafeArea(.bottom)
         .background(Constants.Colors.backgroundColor)
-       
     }
     
 }

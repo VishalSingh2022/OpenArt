@@ -11,8 +11,7 @@ struct CreatorCardView: View {
     
     // MARK: - Properties
     
-    @State var creator: Creator
-    
+    @Binding var creator: Creator
     @State private var followButtonTapped: Bool = false
     
     // MARK: - Body
@@ -93,7 +92,7 @@ struct CreatorCardView: View {
 
 struct CreatorCardView_Previews: PreviewProvider {
     static var previews: some View {
-        CreatorCardView(creator: Creator.creatorData[0])
+        CreatorCardView(creator: .constant(Creator.creatorData[0]))
             .preferredColorScheme(.light)
             .previewLayout(.sizeThatFits)
             .padding(.vertical)

@@ -11,7 +11,7 @@ struct CreatorProfileView: View {
     // MARK: - Properties
     
     @Environment(\.presentationMode) var presentationMode
-    var creator: Creator
+    @Binding var creator: Creator
 
     // MARK: - Body
 
@@ -109,8 +109,8 @@ struct CreatorProfileView: View {
                 
                 
                 // Item For Sale
-                ForEach(creator.items) { item in
-                    ItemCardView(item: item, creator: creator.creatorName, creatorIcon: creator.creatorImage)
+                ForEach($creator.items) { $item in
+                    ItemCardView(item: $item, creator: creator.creatorName, creatorIcon: creator.creatorImage)
                 }
                 
                 // Load More Button
@@ -130,6 +130,6 @@ struct CreatorProfileView: View {
 
 struct CreatorProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        CreatorProfileView(creator: Creator.creatorData[0])
+        CreatorProfileView(creator: .constant(Creator.creatorData[0]))
     }
 }

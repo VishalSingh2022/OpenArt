@@ -11,7 +11,7 @@ struct ItemCardView: View {
     
     // MARK: - Properties
 
-    @State var item: Item
+    @Binding var item: Item
     var creator: String
     var creatorIcon: String
 
@@ -80,9 +80,7 @@ struct ItemCardView: View {
             .background(Constants.Colors.itemColor)
             .cornerRadius(32)
             .shadow(color: Color.black.opacity(0.2), radius: 4, x: 0, y: 1)
-            
-            
-            
+
             ItemPriceView(itemPrice: item.price)
                 .padding(.top, 12)
                 .padding(.bottom, 40)
@@ -96,7 +94,7 @@ struct ItemCardView: View {
 struct ItemCardView_Previews: PreviewProvider {
     static var previews: some View {
         ItemCardView(
-            item: Item(title: "George", image: "george", price: "2.00 ETH"),
+            item: .constant(Item(title: "George", image: "george", price: "2.00 ETH")),
             creator: "Kendy Yanko",
             creatorIcon: "kendy"
         )
